@@ -32,15 +32,18 @@ srand(time(NULL));
     for(int i=0; i<n; i++){
         for(int j = 0; j<n; j++){
             if(arr[i][j]== 's'){
-                int value = rand()%4;
-                if( value == 1){
+                if((arr[i][j+1] != 's') && (arr[i][j+2] !='s') && (arr[i-1][j+1] !='s') && (arr[i+1][j+1] !='s')){
                     arr[i][j+1] = 's';
-                } else if( value ==2){
+                    break;
+                } else if((arr[i+1][j] != 's') && (arr[i+2][j] !='s') && (arr[i+1][j+1] !='s') && (arr[i+1][j-1] !='s')){
                     arr[i+1][j] = 's';
-                } else if( value ==3){
+                    break;
+                } else if((arr[i-1][j-1] != 's') && (arr[i][j-2] !='s') && (arr[i+1][j-1] !='s')&& (arr[i][j-1] !='s')){
                     arr[i][j-1] = 's';
-                } else if(value ==0){
+                    break;
+                } else if((arr[i-1][j] != 's') && (arr[i-2][j] !='s') && (arr[i-1][j-1] !='s')&& (arr[i-1][j+1] !='s')){
                     arr[i-1][j] = 's';
+                    break;
                 }
                 }
             }   
@@ -57,10 +60,10 @@ srand(time(NULL));
             puts("Enter the row");
             scanf("%d", &row);
             if (row == -1){
-                printf("Let's restart your attempts");
+                printf("Let's restart your attempts\n");
                 goto label;
             } else if(row == -2){
-                printf("The game is terminated");
+                printf("The game is terminated\n");
                 return -2;
             }else{
                 puts("Enter the column\n");
