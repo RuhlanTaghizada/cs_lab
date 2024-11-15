@@ -6,11 +6,7 @@ int findSum(int arr[], int length){
     if (length ==0){
         return 0;
     }
-    for (int i = 0; i<length; i++){
-        sum += arr[i];
-    } 
-    return sum;
-
+    return findSum(arr, length - 1) +arr[length-1];
 }
 
 
